@@ -1,26 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { Preloader } from "@/components/Preloader";
+import { BackgroundFX } from "@/components/BackgroundFX";
+import { Navbar } from "@/components/Navbar";
+import { Portfolio } from "@/components/Portfolio";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Index() {
+  const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    document.documentElement.style.scrollBehavior = "smooth";
+  }, []);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen text-foreground">
+      <BackgroundFX />
+      {mounted && loading && <Preloader onDone={() => setLoading(false)} />}
+      <div style={{ opacity: loading ? 0 : 1, transition: "opacity 0.6s" }}>
+        <Navbar />
+        <Portfolio />
+      </div>
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
