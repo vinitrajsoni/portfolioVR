@@ -298,21 +298,21 @@ export function Portfolio() {
             Open to opportunities, collaborations, and interesting AI projects.
           </p>
           <div className="mt-8 grid sm:grid-cols-2 gap-4 text-left">
-            <a href="mailto:vinit@example.com" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+            <a href="mailto:vinitrajsoni52@gmail.com" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
               <Mail size={18} className="text-accent" />
-              <span className="text-sm">vinit@example.com</span>
+              <span className="text-sm">vinitrajsoni52@gmail.com</span>
             </a>
-            <a href="tel:+91" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+            <a href="tel:+916377053411" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
               <Phone size={18} className="text-accent" />
-              <span className="text-sm">+91 XXXXX XXXXX</span>
+              <span className="text-sm">+91 63770 53411</span>
             </a>
-            <a href="#" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+            <a href="https://www.linkedin.com/in/vinit-raj-soni/" target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
               <Linkedin size={18} className="text-accent" />
-              <span className="text-sm">LinkedIn</span>
+              <span className="text-sm">linkedin.com/in/vinit-raj-soni</span>
             </a>
-            <a href="#" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+            <a href="https://github.com/vinitrajsoni" target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
               <Github size={18} className="text-accent" />
-              <span className="text-sm">GitHub</span>
+              <span className="text-sm">github.com/vinitrajsoni</span>
             </a>
           </div>
         </div>
