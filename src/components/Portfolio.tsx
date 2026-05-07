@@ -4,6 +4,7 @@ import gradImg from "@/assets/graduation.jpeg";
 import certEthnus from "@/assets/cert-ethnus.png";
 import certLLM from "@/assets/cert-llm.jpeg";
 import certCV from "@/assets/cert-cv.jpeg";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
   { icon: Bot, title: "AI Chatbot Development", desc: "RAG, LangChain, Gemini" },
@@ -84,10 +85,34 @@ const projects = [
   },
 ];
 
+// ─── Reveal wrapper ────────────────────────────────────────────────────────────
+function Reveal({
+  children,
+  stagger = 0,
+  delay = 0,
+  y = 55,
+  className = "",
+}: {
+  children: React.ReactNode;
+  stagger?: number;
+  delay?: number;
+  y?: number;
+  className?: string;
+}) {
+  const ref = useScrollReveal<HTMLDivElement>({ stagger, delay, y, duration: 0.75 });
+  return (
+    <div ref={ref} className={className}>
+      {children}
+    </div>
+  );
+}
+
+// ─── Section header ────────────────────────────────────────────────────────────
 function Section({ id, title, kicker, children }: { id: string; title: string; kicker?: string; children: React.ReactNode }) {
+  const headerRef = useScrollReveal<HTMLDivElement>({ y: 40, duration: 0.6 });
   return (
     <section id={id} className="scroll-mt-28 py-20 sm:py-28">
-      <div className="mb-12 text-center">
+      <div ref={headerRef} className="mb-12 text-center">
         {kicker && <p className="text-xs uppercase tracking-[0.3em] text-accent mb-3">{kicker}</p>}
         <h2 className="text-3xl sm:text-5xl font-bold tracking-tight" style={{ fontFamily: "Poppins" }}>
           {title}
@@ -99,12 +124,16 @@ function Section({ id, title, kicker, children }: { id: string; title: string; k
   );
 }
 
+// ─── Main component ────────────────────────────────────────────────────────────
 export function Portfolio() {
+  const heroRef = useScrollReveal<HTMLDivElement>({ y: 60, duration: 0.9 });
+
   return (
     <main className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-32">
+
       {/* HOME */}
       <section id="home" className="min-h-[80vh] flex items-center scroll-mt-28">
-        <div className="glass rounded-3xl p-8 sm:p-14 w-full shadow-glow fade-up">
+        <div ref={heroRef} className="glass rounded-3xl p-8 sm:p-14 w-full shadow-glow">
           <div className="grid md:grid-cols-[auto_1fr] items-center gap-10">
             <div className="relative mx-auto">
               <div className="absolute -inset-3 rounded-full bg-gradient-to-tr from-primary to-accent opacity-50 blur-xl" />
@@ -120,7 +149,7 @@ export function Portfolio() {
                 <span className="text-gradient">VINIT RAJ SONI</span>
               </h1>
               <p className="mt-3 text-lg sm:text-xl text-muted-foreground">
-                AI Engineer & Full-Stack Developer
+                AI Engineer &amp; Full-Stack Developer
               </p>
               <p className="mt-5 max-w-xl text-foreground/80 leading-relaxed">
                 Passionate AI Engineer with expertise in LLMs, chatbot development, and web applications.
@@ -141,7 +170,7 @@ export function Portfolio() {
 
       {/* ABOUT / What I can do */}
       <Section id="about" kicker="About" title="What I Can Do">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <Reveal stagger={0.13} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((s) => (
             <div key={s.title} className="glass rounded-2xl p-6 hover:translate-y-[-4px] transition">
               <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4">
@@ -151,12 +180,12 @@ export function Portfolio() {
               <p className="text-sm text-muted-foreground mt-1">{s.desc}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       {/* SKILLS */}
       <Section id="skills" kicker="Toolkit" title="My Skills">
-        <div className="grid md:grid-cols-2 gap-5">
+        <Reveal stagger={0.15} className="grid md:grid-cols-2 gap-5">
           {skillGroups.map((g) => (
             <div key={g.title} className="glass rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-4">
@@ -172,12 +201,12 @@ export function Portfolio() {
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       {/* CERTIFICATES */}
       <Section id="certificates" kicker="Credentials" title="Certificates">
-        <div className="grid md:grid-cols-3 gap-5">
+        <Reveal stagger={0.15} className="grid md:grid-cols-3 gap-5">
           {certificates.map((c) => (
             <div key={c.title} className="glass rounded-2xl p-6 flex flex-col">
               {c.image ? (
@@ -196,12 +225,12 @@ export function Portfolio() {
               )}
             </div>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       {/* EDUCATION */}
       <Section id="education" kicker="Academics" title="Education">
-        <div className="glass rounded-2xl p-6 sm:p-8 grid md:grid-cols-[1fr_auto] gap-8 items-center">
+        <Reveal y={45} className="glass rounded-2xl p-6 sm:p-8 grid md:grid-cols-[1fr_auto] gap-8 items-center">
           <div>
             <div className="flex items-center gap-3 mb-3">
               <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
@@ -221,12 +250,12 @@ export function Portfolio() {
             alt="Graduation"
             className="rounded-2xl w-full md:w-64 h-64 object-cover border border-white/10"
           />
-        </div>
+        </Reveal>
       </Section>
 
       {/* EXPERIENCE */}
       <Section id="experience" kicker="Journey" title="Experience">
-        <div className="space-y-5">
+        <Reveal stagger={0.18} className="space-y-5">
           {experiences.map((e) => (
             <div key={e.role + e.company} className="glass rounded-2xl p-6 sm:p-7">
               <div className="flex flex-wrap items-start justify-between gap-3">
@@ -251,12 +280,12 @@ export function Portfolio() {
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       {/* PROJECTS */}
       <Section id="projects" kicker="Work" title="Projects">
-        <div className="grid md:grid-cols-3 gap-5">
+        <Reveal stagger={0.16} className="grid md:grid-cols-3 gap-5">
           {projects.map((p) => (
             <a
               key={p.name}
@@ -288,16 +317,16 @@ export function Portfolio() {
               </div>
             </a>
           ))}
-        </div>
+        </Reveal>
       </Section>
 
       {/* CONTACT */}
       <Section id="contact" kicker="Say Hi" title="Get In Touch">
-        <div className="glass rounded-3xl p-8 sm:p-12 text-center max-w-2xl mx-auto">
+        <Reveal y={40} delay={0.05} className="glass rounded-3xl p-8 sm:p-12 text-center max-w-2xl mx-auto">
           <p className="text-foreground/80">
             Open to opportunities, collaborations, and interesting AI projects.
           </p>
-          <div className="mt-8 grid sm:grid-cols-2 gap-4 text-left">
+          <Reveal stagger={0.1} delay={0.2} className="mt-8 grid sm:grid-cols-2 gap-4 text-left">
             <a href="mailto:vinitrajsoni52@gmail.com" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
               <Mail size={18} className="text-accent" />
               <span className="text-sm">vinitrajsoni52@gmail.com</span>
@@ -314,8 +343,8 @@ export function Portfolio() {
               <Github size={18} className="text-accent" />
               <span className="text-sm">github.com/vinitrajsoni</span>
             </a>
-          </div>
-        </div>
+          </Reveal>
+        </Reveal>
       </Section>
 
       <footer className="py-10 text-center text-xs text-muted-foreground">

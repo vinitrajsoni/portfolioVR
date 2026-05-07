@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0d0d1a"/>
+    </linearGradient>
+    <linearGradient id="vr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c0aaff"/>
+      <stop offset="100%" stop-color="#7b6fff"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="32" fill="url(#bg)"/>
+
+  <!-- Subtle outer ring -->
+  <circle cx="32" cy="32" r="30" fill="none" stroke="url(#vr)" stroke-width="1" opacity="0.4"/>
+
+  <!-- VR text -->
+  <text
+    x="32"
+    y="41"
+    font-family="'Arial Black', 'Arial', sans-serif"
+    font-weight="900"
+    font-size="26"
+    text-anchor="middle"
+    fill="url(#vr)"
+    filter="url(#glow)"
+    letter-spacing="-1"
+  >VR</text>
+</svg>
