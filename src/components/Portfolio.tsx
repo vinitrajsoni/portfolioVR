@@ -2,6 +2,8 @@ import { Mail, Phone, Linkedin, Github, ExternalLink, GraduationCap, Briefcase, 
 import profileImg from "@/assets/profile.jpeg";
 import gradImg from "@/assets/graduation.jpeg";
 import certEthnus from "@/assets/cert-ethnus.png";
+import certLLM from "@/assets/cert-llm.jpeg";
+import certCV from "@/assets/cert-cv.jpeg";
 
 const services = [
   { icon: Bot, title: "AI Chatbot Development", desc: "RAG, LangChain, Gemini" },
