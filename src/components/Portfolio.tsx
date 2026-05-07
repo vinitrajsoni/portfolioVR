@@ -23,11 +23,13 @@ const certificates = [
   {
     title: "Generative AI with Large Language Models (LLM)",
     issuer: "Coursera",
+    image: certLLM,
     link: "https://www.coursera.org/account/accomplishments/verify/5ZDPNZ2ZRZCE",
   },
   {
     title: "Introduction to Computer Vision and Image Processing",
     issuer: "Coursera",
+    image: certCV,
     link: "https://www.coursera.org/account/accomplishments/verify/38W1C4TB7N5U",
   },
   {
